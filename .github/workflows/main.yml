@@ -1,0 +1,27 @@
+name: test_chatbot
+
+on:
+  push:
+#   schedule:
+#     - cron: '0 22 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Install dependencies
+        run:
+          python -m pip install --upgrade pip
+          pip install line-bot-sdk
+      - name: Run script
+        env:
+          CHANNEL_ACCESS_TOKEN: "+UVpHVl+m20cChgyg8KzovoFQZIlLdza7zW6gt64ZQwj3OI17BfO5ftT+NHejPkC2ASst5GJE2krTb7TJpylXYBzLdHD09SmU6JsSFXoun2c4RexPfysmOtKOUpNRTThar6oS4+56BIGCOBCCTf5wAdB04t89/1O/w1cDnyilFU="
+          USER_ID: "Ue72079a8708b70ac6bf25d89f24c4157"
+        run:
+          python main.py
